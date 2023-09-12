@@ -22,7 +22,7 @@ class Calculator {
         let result
     
         if (isNaN(previousValue) || isNaN(currentValue)) {
-            return
+            return;
         }
         switch (this.$previousPreview.textContent.slice(-1)) {
             case '+':
@@ -40,7 +40,7 @@ class Calculator {
             default:
                 return;
         }
-    
+
         this.$currentPreview.textContent = result.toString()
     }
     
@@ -62,8 +62,8 @@ const $plus = document.querySelector("[data-btn-plus]")
 const $minus = document.querySelector('[data-btn-minus]')
 const $multiply = document.querySelector('[data-btn-multiply]')
 const $divide = document.querySelector('[data-btn-divide]')
-const $eqaul = document.querySelector('[data-btn-eqaul]')
-const $clear = document.querySelector('[data-btn-reset]')
+const $equal = document.querySelector('[data-btn-equal]'); 
+const $clear = document.querySelector('[data-btn-reset]'); 
 
 // 숫자, 연산
 const $numbers = document.querySelectorAll("[data-btn-number]")
@@ -93,7 +93,7 @@ $operations.forEach(($operation) => {
             case $divide:
                 cal.onPressOperation("÷")
                 break;
-            case $eqaul:
+            case $equal:
                 cal.onEqual()
                 break;
             case $clear:
