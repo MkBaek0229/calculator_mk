@@ -11,7 +11,7 @@ class Calculator {
         this.$currentPreview.textContent += number
     }
 
-    onPressoperation(operation) {
+    onPressOperation(operation) {
         this.$previousPreview.textContent = `${this.$currentPreview.textContent} ${operation}`
         this.$currentPreview.textContent = ''
 
@@ -29,6 +29,7 @@ const $plus = document.querySelector("[data-btn-plus]")
 const $minus = document.querySelector('[data-btn-minus]')
 const $multiply = document.querySelector('[data-btn-multiply]')
 const $divide = document.querySelector('[data-btn-divide]')
+const $eqaul = document.querySelectorAll('[data-btn-eqaul]')
 
 // 숫자, 연산
 const $numbers = document.querySelectorAll("[data-btn-number]")
@@ -45,7 +46,7 @@ $numbers.forEach(($number) => {
 
 $operations.forEach(($operation) => {
     $operation.addEventListener("click", (e) => {
-       switch ($operation) {
+        switch ($operation) {
             case $plus:
                 cal.onPressOperation("+")
                 break;
