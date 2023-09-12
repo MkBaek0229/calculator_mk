@@ -14,10 +14,39 @@ class Calculator {
     onPressOperation(operation) {
         this.$previousPreview.textContent = `${this.$currentPreview.textContent} ${operation}`
         this.$currentPreview.textContent = ''
-
     }
     
-}
+    onEqual() {
+        const previousValue = parseFloat(this.$previousPreview.textContent)
+        const currentValue = parseFloat(this.$currentPreview.textContent)
+        let result
+    
+        if (isNaN(previousValue) || isNaN(currentValue)) {
+            return
+        }
+    
+        switch (this.$previousPreview.textContent.slice(-1)) {
+            case '+':
+                result = previousValue + currentValue
+                break;
+            case '-':
+                result = previousValue - currentValue
+                break;
+            case '*':
+                result = previousValue * currentValue
+                break;
+            case '÷':
+                result = previousValue / currentValue
+                break;
+            default:
+                return;
+        }
+    
+        this.$currentPreview.textContent = result.toString()
+    }
+    
+    }
+
 
 
 // 값 표시
@@ -29,7 +58,7 @@ const $plus = document.querySelector("[data-btn-plus]")
 const $minus = document.querySelector('[data-btn-minus]')
 const $multiply = document.querySelector('[data-btn-multiply]')
 const $divide = document.querySelector('[data-btn-divide]')
-const $eqaul = document.querySelectorAll('[data-btn-eqaul]')
+const $eqaul = document.querySelector('[data-btn-eqaul]')
 
 // 숫자, 연산
 const $numbers = document.querySelectorAll("[data-btn-number]")
@@ -60,7 +89,7 @@ $operations.forEach(($operation) => {
                 cal.onPressOperation("÷")
                 break;
             case $eqaul:
-                //
+                cal.onEqual()
                 break;
             default:
                 break;
